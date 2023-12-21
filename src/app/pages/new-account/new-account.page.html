@@ -1,0 +1,107 @@
+<ion-content [fullscreen]="true">
+  <ion-grid
+    class="ion-no-padding ion-no-margin background-opts"
+    [style.background-image]="'url('+image+')'"
+  >
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col class="ion-padding-top">
+        <ion-text class="title"> Your details </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <p class="gender-label">Select your gender</p>
+              <ion-radio-group formControlName="gender">
+                <ion-item-group mode="ios">
+                  <ion-item lines="none">
+                    <ion-label>Male</ion-label>
+                    <ion-radio value="m"></ion-radio>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-label>Female</ion-label>
+                    <ion-radio value="f"></ion-radio>
+                  </ion-item>
+                </ion-item-group>
+              </ion-radio-group>
+            </ion-col>
+            <div
+              class="errors-container"
+              *ngIf="infoForm.get('gender').invalid && (infoForm.get('gender').dirty || infoForm.get('gender').touched)"
+            >
+              <ng-container *ngIf="infoForm.get('gender').errors.required"
+                >Field is required</ng-container
+              >
+            </div>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked">Weight</ion-label>
+                <ion-input type="text" formControlName="weight"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="infoForm.get('weight').invalid && (infoForm.get('weight').dirty || infoForm.get('weight').touched)"
+              >
+                <ng-container *ngIf="infoForm.get('weight').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked">Height</ion-label>
+                <ion-input type="text" formControlName="height"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="infoForm.get('height').invalid && (infoForm.get('height').dirty || infoForm.get('height').touched)"
+              >
+                <ng-container *ngIf="infoForm.get('height').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked">Birth</ion-label>
+                <ion-datetime
+                  displayFormat="DD MMMM YYYY"
+                  formControlName="birth"
+                ></ion-datetime>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="infoForm.get('birth').invalid && (infoForm.get('birth').dirty || infoForm.get('birth').touched)"
+              >
+                <ng-container *ngIf="infoForm.get('birth').errors.required">
+                  Field is required
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-padding-top">
+              <ion-button
+                [disabled]="infoForm.invalid"
+                class="cta-button"
+                expand="block"
+                fill="solid"
+                type="submit"
+              >
+                <span>Continue</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,18 @@
+.key-button {
+  --border-radius: 16px;
+  --background: var(--ion-color-medium);
+  --color: #fff;
+  --box-shadow: none !important;
+  width: 64px;
+  height: 64px;
+}
+
+.text {
+  font-size: 15px;
+  text-transform: capitalize;
+  line-height: 20px;
+}
+
+.key {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,133 @@
+<ion-content [fullscreen]="true">
+  <ion-grid
+    class="ion-no-padding ion-no-margin background-opts"
+    [style.background-image]="'url('+workoutTip.image+')'"
+  >
+    <ion-row>
+      <ion-col class="header-container">
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-back-button
+                defaultHref=""
+                text=""
+                (click)="goBack()"
+              ></ion-back-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col class="ion-padding-top">
+        <ion-text class="article-title"> {{ workoutTip.title }} </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start">
+            <img [src]="workoutTip.author.avatar" />
+          </ion-avatar>
+          <ion-label>
+            <h2 class="item-title">{{ workoutTip.author.name }}</h2>
+            <p class="item-subtitle">
+              {{ workoutTip.date | date:'mediumDate' }}
+            </p>
+          </ion-label>
+          <ion-button
+            class="circle-btn"
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="light"
+          >
+            <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <div class="article-footer">
+          <div>
+            <ul>
+              <li>
+                <ion-item lines="none">
+                  <ion-icon color="danger" name="heart"></ion-icon>
+                  <ion-label>{{ workoutTip.likes }}</ion-label>
+                </ion-item>
+              </li>
+              <li>
+                <ion-item lines="none">
+                  <ion-icon color="medium" name="chatbubble-outline"></ion-icon>
+                  <ion-label>{{ workoutTip.comments.total }}</ion-label>
+                </ion-item>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p [innerHTML]="workoutTip.content"></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-text color="medium">Share this article</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          class="circle-btn"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+        <ion-icon class="i24" name="logo-facebook"></ion-icon>
+        </ion-button>
+        <ion-button
+          class="circle-btn"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+        <ion-icon class="i24" name="logo-twitter"></ion-icon>
+        </ion-button>
+        <ion-button
+          class="circle-btn"
+          fill="clear"
+          size="small"
+          shape="round"
+          color="primary"
+        >
+        <ion-icon class="i24" name="logo-linkedin"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="section-title">
+          <ion-text>Comments</ion-text>
+          <a slot="end" [routerLink]="">View All</a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding" *ngFor="let item of workoutTip.comments.data">
+        <app-comment-item [comment]="item"></app-comment-item>
+        <ng-container *ngIf="item?.replies">
+          <ion-row class="ion-no-padding">
+            <ion-col class="reply ion-no-padding" *ngFor="let reply of item.replies">
+              <app-comment-item [comment]="reply"></app-comment-item>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,14 @@
+<div class="review-container">
+  <div class="review-avatar">
+    <ion-avatar>
+      <img [src]="avatar" />
+    </ion-avatar>
+  </div>
+  <div class="review-area">
+    <div class="comment-text">
+      <ion-text>{{ name }}</ion-text>
+      <p class="date">{{ rate }} out of 5 • {{ date | date: "mediumDate" }}</p>
+      <p class="comment">{{ comment }}</p>
+    </div>
+  </div>
+</div>

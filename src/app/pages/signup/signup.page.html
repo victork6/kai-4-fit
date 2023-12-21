@@ -1,0 +1,146 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/onboarding" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding full-height">
+    <ion-row>
+      <ion-col>
+        <ion-text class="title ion-margin-bottom">Sign Up</ion-text>
+        <form [formGroup]="registerForm" (ngSubmit)="signUp()">
+          <ion-row class="input-container ion-no-padding">
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked"
+                  >First Name</ion-label
+                >
+                <ion-input type="text" formControlName="firstName"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="registerForm.get('firstName').invalid && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)"
+              >
+                <ng-container
+                  *ngIf="registerForm.get('firstName').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked"
+                  >Last Name</ion-label
+                >
+                <ion-input type="text" formControlName="lastName"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="registerForm.get('lastName').invalid && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched)"
+              >
+                <ng-container
+                  *ngIf="registerForm.get('firstName').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked"
+                  >Email Address</ion-label
+                >
+                <ion-input type="email" formControlName="email"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)"
+              >
+                <ng-container *ngIf="registerForm.get('email').errors.required"
+                  >Email is required</ng-container
+                >
+                <ng-container
+                  *ngIf="registerForm.get('email').errors.invalidEmail"
+                  >Email is invalid</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked"
+                  >Password</ion-label
+                >
+                <ion-input
+                  type="password"
+                  formControlName="password"
+                ></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)"
+              >
+                <ng-container
+                  *ngIf="registerForm.get('password').errors.required"
+                >
+                  Password is required
+                </ng-container>
+                <ng-container
+                  *ngIf="registerForm.get('password').errors.invalidPassword"
+                >
+                  {{registerForm.get('password').errors.message}}
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-padding-top">
+              <ion-button
+                [disabled]="registerForm.invalid"
+                class="cta-button"
+                expand="block"
+                fill="solid"
+                type="submit"
+              >
+                <span>Sign Up</span>
+              </ion-button>
+              <p class="caption-text">
+                By signing up you agree our Terms and Conditions and Privary
+                Policy
+              </p>
+            </ion-col>
+          </ion-row>
+        </form>
+        <div class="ion-text-center">
+          <p class="small">or sign up with</p>
+          <div class="flex-center">
+            <ion-button fill="outline" class="social-btn">
+              <div class="btn-container">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-text>Facebook</ion-text>
+              </div>
+            </ion-button>
+            <ion-button fill="outline" class="social-btn">
+              <div class="btn-container">
+                <ion-icon name="logo-google"></ion-icon>
+                <ion-text>Google</ion-text>
+              </div>
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <div class="login-message">
+          <span>Already have an account?</span
+          ><a routerLink="/signin">Sign In</a>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

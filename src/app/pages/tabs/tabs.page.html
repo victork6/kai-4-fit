@@ -1,0 +1,23 @@
+<ion-tabs (ionTabsDidChange)="setSelectedTab($event)">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon [name]="selected === 'home' ? 'flash' : 'flash-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="training">
+      <ion-icon [name]="selected === 'training' ? 'podium' : 'podium-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="courses">
+      <ion-icon [name]="selected === 'courses' ? 'albums' : 'albums-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="community">
+      <ion-icon [name]="selected === 'community' ? 'globe' : 'globe-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon [name]="selected === 'profile' ? 'person' : 'person-outline'"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

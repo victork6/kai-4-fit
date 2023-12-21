@@ -1,0 +1,39 @@
+p {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+ion-text {
+  font-size: 14px;
+  color: var(--ion-color-medium);
+  font-weight: 400;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+video,
+video > source {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.grid-gallery {
+  columns: 3;
+  column-gap: 16px;
+  justify-content: center;
+
+  .image-element {
+    height: auto;
+    width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+}

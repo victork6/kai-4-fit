@@ -1,0 +1,18 @@
+<ion-item lines="none">
+  <ion-avatar slot="start">
+    <img [src]="avatar"/>
+  </ion-avatar>
+  <ion-label>
+    <ion-text>{{ name }}</ion-text>
+    <ul>
+      <li>
+        <ion-icon color="medium" name="videocam-outline"></ion-icon>
+      </li>
+      <li>{{ videos }} videos</li>
+    </ul>
+  </ion-label>
+  <ion-label slot="end" class="ion-text-right">
+    <ion-text>{{ followers }}</ion-text>
+    <p>Followers</p>
+  </ion-label>
+</ion-item>

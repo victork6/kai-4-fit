@@ -1,0 +1,42 @@
+.review-container {
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-template-areas: "avatar comment button";
+  grid-auto-columns: auto;
+  padding-bottom: 16px;
+}
+.review-avatar {
+  grid-area: avatar;
+  width: fit-content;
+}
+
+.review-area {
+  grid-area: comment;
+  line-height: 1.25em;
+}
+
+p {
+  margin: 0;
+}
+
+ion-avatar {
+  margin-top: 0;
+  height: 40px;
+  width: 40px;
+}
+
+.comment-text {
+  line-height: 22px;
+  font-size: 14px;
+
+  .comment {
+    white-space: normal;
+    color: var(--ion-color-light);
+  }
+
+  .date {
+    color: var(--ion-color-medium);
+  }
+}

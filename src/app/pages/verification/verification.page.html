@@ -1,0 +1,38 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="full ion-padding-horizontal">
+      <ion-col class="ion-padding-horizontal flex-container">
+        <div>
+          <ion-text class="title"> Verification </ion-text>
+          <p>We've sent a verification code to alex@gmail.com</p>
+        </div>
+        <div class="code-container">
+          <div class="code" [ngClass]="{active: verificationArray[0] != '-'}">
+            <span> {{ verificationArray[0] }} </span>
+          </div>
+          <div class="code" [ngClass]="{active: verificationArray[1] != '-'}">
+            <span> {{ verificationArray[1] }}</span>
+          </div>
+          <div class="code" [ngClass]="{active: verificationArray[2] != '-'}">
+            <span> {{ verificationArray[2] }}</span>
+          </div>
+          <div class="code" [ngClass]="{active: verificationArray[3] != '-'}">
+            <span> {{ verificationArray[3] }}</span>
+          </div>
+        </div>
+        <ion-row>
+          <ion-col
+            class="ion-text-center ion-no-padding"
+            size="4"
+            *ngFor="let key of keys"
+          >
+            <app-keypad-button
+              [key]="key"
+              (click)="onClick(key)"
+            ></app-keypad-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

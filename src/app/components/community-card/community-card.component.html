@@ -1,0 +1,54 @@
+<ion-card class="ion-no-margin">
+  <ion-card-title>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-avatar slot="start">
+        <img
+          [src]="avatar"
+        />
+      </ion-avatar>
+      <ion-label>
+        <h2 class="item-title">{{ name }}</h2>
+        <p class="item-subtitle">{{ date | date:'mediumDate' }}</p>
+      </ion-label>
+      <ion-button
+        slot="end"
+        fill="clear"
+        size="small"
+        shape="round"
+        color="light"
+        (click)="presentActionSheet()"
+      >
+        <ion-icon
+          slot="icon-only"
+          name="ellipsis-vertical"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card-title>
+  <ion-card-content class="ion-no-padding">
+    <ion-slides pager="true" [options]="imgConfig">
+      <ion-slide *ngFor="let item of images">
+        <img src="{{ item }}"/>
+      </ion-slide>
+    </ion-slides>
+
+    <div class="card-footer">
+      <div class="icon-container">
+        <ul>
+          <li>
+            <ion-item lines="none">
+              <ion-icon color="danger" name="heart"></ion-icon>
+              <ion-label>{{ likes }}</ion-label>
+            </ion-item>
+          </li>
+          <li>
+            <ion-item lines="none">
+              <ion-icon color="light" name="chatbubble-outline"></ion-icon>
+              <ion-label>{{ comments }}</ion-label>
+            </ion-item>
+          </li>
+        </ul>
+      </div>     
+    </div>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,15 @@
+<ion-button class="key-button" fill="clear" color="light">
+  <ng-container [ngSwitch]="key">
+    <span *ngSwitchCase="-1">
+      <ion-icon name="custom-delete" size="large"></ion-icon>
+    </span>
+    <span *ngSwitchCase="'Resend'">
+      <span class="text">Resend</span>
+    </span>
+    <span *ngSwitchDefault>
+      <span class="key">
+        {{ key }}
+      </span>
+    </span>
+  </ng-container>
+</ion-button>

@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true">
+  <ion-grid
+    class="ion-no-padding ion-no-margin background-opts"
+    [style.background-image]="'url('+trainer.image+')'"
+  >
+    <ion-row>
+      <ion-col class="header-container">
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-back-button
+                defaultHref=""
+                text=""
+                (click)="goBack()"
+              ></ion-back-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col class="ion-padding-vertical">
+        <div class="trainer-container">
+          <div class="trainer-name">
+            <ion-text>{{ trainer.name }}</ion-text>
+            <span *ngIf="trainer.verified">Verified trainer</span>
+          </div>
+          <ion-button
+            fill="solid"
+            size="small"
+            color="primary"
+            class="follow-btn"
+          >
+            Follow
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" class="stats ion-text-center">
+        <ion-text>Followers</ion-text>
+        <p>{{ trainer.followers }}</p>
+      </ion-col>
+      <ion-col size="4" class="stats ion-text-center">
+        <ion-text>Videos</ion-text>
+        <p>{{ trainer.videos }}</p>
+      </ion-col>
+      <ion-col size="4" class="stats ion-text-center">
+        <ion-text>Courses</ion-text>
+        <p>{{ trainer.coursesTotal }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top">
+      <ion-col>
+        <p [innerHTML]="trainer.bio"></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="section-title">
+          <ion-text>Courses</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" *ngFor="let course of trainer.courses"> 
+        <app-course-card
+        [new]="course.new"
+        [image]="course.image"
+        [title]="course.title"
+        [duration]="course.duration"
+        [bodyArea]="course.bodyArea"
+        ></app-course-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

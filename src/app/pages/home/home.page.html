@@ -1,0 +1,96 @@
+<ion-content [fullscreen]="true">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon
+            color="light"
+            slot="icon-only"
+            name="notifications-outline"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="navigateToSearch()">
+          <ion-icon
+            color="light"
+            slot="icon-only"
+            name="search-outline"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<!-- Hasta aquí-->
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <ion-slides [options]="newConfig" [pager]="true">
+          <ion-slide
+            class="courses-slide"
+            *ngFor="let course of newCourses"
+            [style.background-image]="'url('+course.image+')'"
+          >
+            <div class="new-courses">
+              <div class="flex-text">
+                <span class="new-badge" *ngIf="course.new">New</span>
+                <ion-text (click)="goToCourse(course.id)"
+                  >{{ course.title }}</ion-text
+                >
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="section-title">
+          <ion-text>Recommended to you</ion-text>
+          <a slot="end" [routerLink]="">View All</a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-padding-bottom">
+        <ion-slides [options]="slideConfig">
+          <ion-slide *ngFor="let course of newCourses">
+            <app-course-card
+              [new]="course.new"
+              [image]="course.image"
+              [title]="course.title"
+              [duration]="course.duration"
+              [bodyArea]="course.bodyArea"
+              (click)="goToCourse(course.id)"
+            ></app-course-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none" class="section-title">
+          <ion-text>Workout Tips</ion-text>
+          <a slot="end" routerLink="/workout-tips">View All</a>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-padding-bottom">
+        <ion-slides [options]="workOutConfig">
+          <ion-slide *ngFor="let workout of workoutTips">
+            <app-workout-tip-card
+              (click)="goToTip(workout.id)"
+              [image]="workout.image"
+              [title]="workout.title"
+              [author]="workout.author.name"
+              [date]="workout.date"
+            ></app-workout-tip-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

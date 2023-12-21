@@ -1,0 +1,76 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/training"
+        text=""
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row class="ion-padding-bottom">
+      <ion-col size="6" class="ion-align-items-center">
+        <ion-text class="title">Lower Body Workout</ion-text>
+      </ion-col>
+      <ion-col size="6">
+        <div class="center">
+          <ul class="numbers">
+            <li>08</li>
+            <li>12</li>
+          </ul>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-training-play-card
+          [image]="'https://images.unsplash.com/photo-1581009137042-c552e485697a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80'"
+          [text]="'Energy boosting cardio jumpstart workout. Total body warm up workout video 30 seconds each'"
+        >
+        </app-training-play-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-top">
+      <ion-col size="4" class="stats ion-text-start">
+        <ion-text>Duration</ion-text>
+        <p>20 mins</p>
+      </ion-col>
+      <ion-col size="4" class="stats ion-text-start">
+        <ion-text>Calorie Burn</ion-text>
+        <p>35-55</p>
+      </ion-col>
+      <ion-col size="4" class="stats ion-text-start">
+        <ion-text>Difficulty</ion-text>
+        <p>2/5</p>
+      </ion-col>
+      <ion-col size="4" class="stats ion-text-start">
+        <ion-text>Trainig Type</ion-text>
+        <p>Warm up</p>
+      </ion-col>
+      <ion-col size="4" class="stats ion-text-start">
+        <ion-text>Body Focus</ion-text>
+        <p>Total body</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="half-padding">
+    <div class="flex-center">
+      <ion-button class="cta-button" (click)="openModal()">
+        <span>Start now</span>
+      </ion-button>
+      <ion-button fill="outline" color="primary" class="cta-outline">
+        <span>Add to calendar</span>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

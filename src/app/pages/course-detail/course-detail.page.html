@@ -1,0 +1,140 @@
+<ion-content [fullscreen]="true">
+  <ion-grid
+    class="ion-no-padding ion-no-margin background-opts"
+    [style.background-image]="'url('+course.image+')'"
+  >
+    <ion-row>
+      <ion-col class="header-container">
+        <ion-header class="ion-no-border">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-back-button                
+                defaultHref=""
+                text=""
+                (click)="goBack()"
+              ></ion-back-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button>
+                <ion-icon
+                  color="light"
+                  slot="icon-only"
+                  name="share-social-outline"
+                ></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding-horizontal">
+    <ion-row>
+      <ion-col class="ion-padding-top">
+        <ion-text class="article-title"> {{ course.title }} </ion-text>
+        <div class="article-footer">
+          <div>
+            <ul>
+              <li>
+                <ion-item lines="none">
+                  <ion-icon color="danger" name="heart"></ion-icon>
+                  <ion-label>{{ course.likes }}</ion-label>
+                </ion-item>
+              </li>
+              <li>
+                <ion-item lines="none">
+                  <ion-icon color="medium" name="people-outline"></ion-icon>
+                  <ion-label>{{ course.completed }} Completed</ion-label>
+                </ion-item>
+              </li>
+              <li>
+                <ion-item lines="none">
+                  <ion-icon color="medium" name="fitness-outline"></ion-icon>
+                  <ion-label>{{ course.type }}</ion-label>
+                </ion-item>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start">
+            <img [src]="course.author.avatar" />
+          </ion-avatar>
+          <ion-label>
+            <p>Created by</p>
+            <h2 class="item-title">{{ course.author.name }}</h2>
+          </ion-label>
+          <ion-button
+            class="circle-btn"
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="light"
+          >
+            <ion-icon
+              slot="icon-only"
+              name="ellipsis-vertical-outline"
+            ></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-segment [(ngModel)]="tabType" mode="md">
+          <ion-segment-button value="details">
+            <ion-text>Details</ion-text>
+          </ion-segment-button>
+          <ion-segment-button value="schedule">
+            <ion-text>Schedule</ion-text>
+          </ion-segment-button>
+          <ion-segment-button value="reviews">
+            <ion-text>Reviews</ion-text>
+          </ion-segment-button>
+        </ion-segment>
+        <div [ngSwitch]="tabType">
+          <ion-row *ngSwitchCase="'details'" class="ion-no-padding">
+            <ion-col>
+              <p [innerHTML]="course.description"></p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngSwitchCase="'schedule'" class="ion-no-padding">
+            <ion-col>
+              <ion-list>
+                <app-schedule-item *ngFor="let item of course.schedule"
+                [title]="item.title"
+                [image]="item.image"
+                [bodyArea]="item.bodyArea"
+                [duration]="item.duration"
+                [day]="item.day"
+                ></app-schedule-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngSwitchCase="'reviews'" class="ion-no-padding">
+            <ion-col>
+              <ion-list>
+                <app-review-item *ngFor="let item of course.reviews"
+
+                [name]="item.name"
+                [avatar]="item.avatar"
+                [date]="item.date"
+                [rate]="item.rate"
+                [comment]="item.comment"
+                ></app-review-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="half-padding">
+    <ion-button class="cta-button" expand="block" fill="solid">
+      <span>Start training</span>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

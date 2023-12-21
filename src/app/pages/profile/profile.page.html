@@ -1,0 +1,112 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{ profile.firstName }} {{ profile.lastName }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="editProfile(profile)">
+        <ion-icon
+          color="medium"
+          slot="icon-only"
+          name="create-outline"
+        ></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToSettings()">
+        <ion-icon
+          color="medium"
+          slot="icon-only"
+          name="ellipsis-vertical"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ profile.firstName }} {{ profile.lastName }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row class="ion-padding">
+      <ion-col size="3" class="stats">
+        <ion-avatar>
+          <img [src]="profile.avatar" />
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="3" class="stats ion-text-center">
+        <ion-text>Followers</ion-text>
+        <p>{{ profile.followers }}</p>
+      </ion-col>
+      <ion-col size="3" class="stats ion-text-center">
+        <ion-text>Following</ion-text>
+        <p>{{ profile.following }}</p>
+      </ion-col>
+      <ion-col size="3" class="stats ion-text-center">
+        <ion-text>Photos</ion-text>
+        <p>{{ profile.photosTotal }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-segment [(ngModel)]="tabType" mode="md">
+          <ion-segment-button value="courses">
+            <ion-icon name="podium-outline"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="photos">
+            <ion-icon name="albums-outline"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="videos">
+            <ion-icon name="videocam-outline"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+        <div [ngSwitch]="tabType">
+          <ion-row *ngSwitchCase="'courses'" class="ion-padding">
+            <ion-col size="6" *ngFor="let course of profile.courses">
+              <app-course-card
+                [new]="course.new"
+                [image]="course.image"
+                [title]="course.title"
+                [duration]="course.duration"
+                [bodyArea]="course.bodyArea"
+                (click)="goToDetail(course.id)"
+              ></app-course-card>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngSwitchCase="'photos'" class="ion-no-padding">
+            <ion-col class="ion-padding">
+              <div class="grid-gallery">
+                <img
+                  *ngFor="let pic of profile.photos"
+                  class="image-element"
+                  [src]="pic"
+                  (click)="openModal(pic)"
+                />
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngSwitchCase="'videos'" class="ion-no-padding">
+            <ion-col
+              *ngFor="let item of profile.videos"
+              size="12"
+              size-lg="4"
+              size-md="6"
+              class="ion-padding"
+            >
+              <video
+                #videoElement
+                playsinline
+                preload="auto"
+                [poster]="item.image"
+                controls
+              >
+                <source [src]="item.video" type="video/mp4" />
+              </video>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

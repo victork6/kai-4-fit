@@ -1,0 +1,70 @@
+ion-button {
+  --border-radius: 50%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.comment {
+  font-size: 14px;
+  font-weight: 400;
+
+  .user-comment {
+    font-weight: 600;
+    padding-right: 8px;
+  }
+
+  .user-message {
+    color: var(--ion-color-light);
+  }
+}
+
+.comment-container {
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  grid-template-rows: 1fr;
+  gap: 0px 10px;
+  grid-template-areas: "avatar comment button";
+  grid-auto-columns: auto;
+  padding-bottom: 16px;
+}
+
+.comment-area {
+  grid-area: comment;
+}
+
+.comment-avatar {
+  grid-area: avatar;
+  width: fit-content;
+}
+
+.comment-button {
+  grid-area: button;
+  width: fit-content;
+}
+
+ion-avatar {
+  margin-top: 0;
+  height: 36px;
+  width: 36px;
+}
+
+.info-bar {
+  font-size: 14px;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  li {
+    display: inline;
+    padding-right: 8px;
+    color: var(--ion-color-medium);
+
+  }
+
+  li:last-child {
+    padding-right: 0 !important;
+  }
+}

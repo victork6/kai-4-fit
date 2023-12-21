@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <ion-grid class="full">
+    <ion-row class="ion-padding-vertical">
+      <ion-col>
+        <ion-text class="title ion-margin-bottom">Triceps Extensions</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>
+          {{hours | numbersTime}}:{{ minutes | numbersTime}}:{{ seconds
+          |numbersTime}}
+        </p>
+        <circle-progress [percent]="percent"></circle-progress>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding-vertical">
+      <ion-col>
+        <div class="info">
+          <ion-text>Next: Arm circle</ion-text>
+          <p>45 seconds, 2 sets</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="half-padding">
+    <div class="flex-center">
+      <ion-button class="cta-button" (click)="action()" [disabled]="disabled">
+        <span>{{textAction}}</span>
+      </ion-button>
+      <ion-button
+        fill="outline"
+        color="primary"
+        class="cta-outline"
+        (click)="stop()"
+      >
+        <span>Restart</span>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

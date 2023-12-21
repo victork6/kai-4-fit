@@ -1,0 +1,31 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title> Community </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Community</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row class="ion-padding">
+      <ion-col>
+        <app-community-card
+          *ngFor="let item of data"
+          [id]="item.id"
+          [avatar]="item.user.avatar"
+          [name]="item.user.name"
+          [date]="item.date"
+          [images]="item.images"
+          [likes]="item.likes"
+          [comments]="item.comments.total"
+        >
+        </app-community-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

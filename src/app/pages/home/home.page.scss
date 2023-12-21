@@ -1,0 +1,55 @@
+ion-header {
+  position: absolute;
+
+  ion-toolbar {
+    --background: none;
+  }
+}
+
+ion-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.courses-slide {
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  .new-courses {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    align-items: flex-end;
+    padding: 2rem 1.5rem;
+
+    .flex-text {
+      display: flex;
+      flex-direction: column;
+
+      .new-badge {
+        margin-bottom: 12px;
+        color: var(--ion-color-dark) !important;
+        font-weight: 500;
+        font-size: 13px;
+        text-transform: uppercase;
+        border-radius: 10px;
+        background: var(--ion-color-primary);
+        padding: 4px 8px;
+        line-height: 17px;
+        max-width: 55px;
+      }
+
+      ion-text {
+        font-size: 46px;
+        font-family: "Bebas Neue", cursive !important;
+        color: #fff;
+        text-shadow: 0px 0px 2px black;
+        max-width: 70%;
+        text-align: left;
+        line-height: 42px;
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.calendar {
+  background: #3e3e4e;
+}
+
+ion-card {
+  box-shadow: none !important;
+  border-radius: 10px;
+
+  ion-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --color: var(--ion-color-light);
+
+    .month {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      ion-icon {
+        font-size: 24px;
+      }
+
+      .date h1 {
+        margin: 0;
+        font-size: 18px;
+      }
+    }
+
+    .weekdays {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 8px;
+
+      div {
+        aspect-ratio: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        
+      }
+    }
+  }
+
+  ion-card-content {
+    .days {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 8px;
+
+      div {
+        aspect-ratio: 1;
+        transition: background-color 0.2s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        color: var(--ion-color-light);
+      }
+
+      .today {
+        border: 1.5px solid white;
+        border-radius: 8px;
+      }
+
+      .prev-date,
+      .next-date {
+        color: var(--ion-color-medium);
+      }
+
+      div:hover:not(.today) {
+        background-color: var(--ion-color-dark);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

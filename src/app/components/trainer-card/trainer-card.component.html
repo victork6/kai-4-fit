@@ -1,0 +1,27 @@
+<ion-card class="ion-no-border ion-no-padding ion-no-margin">
+  <ion-card-content class="ion-no-padding" [style.background-image]="'url(' + image + ')'">
+    
+
+    <div class="text-container ion-padding">
+      <div class="title-container">
+        <ion-card-title>{{ name }}</ion-card-title>
+        <ion-icon *ngIf="verified" name="trophy"></ion-icon>
+      </div>
+      
+      <ion-row class="ion-padding-top">
+        <ion-col size="4" class="ion-text-left ion-no-padding">
+          <ion-text>Followers</ion-text>
+          <p>{{ followers }}</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-left ion-no-padding">
+          <ion-text>Videos</ion-text>
+          <p>{{ videos }}</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-left ion-no-padding">
+          <ion-text>Courses</ion-text>
+          <p>{{ courses }}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-card-content>
+</ion-card>

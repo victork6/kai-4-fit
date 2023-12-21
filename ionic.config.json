@@ -1,0 +1,7 @@
+{
+  "name": "Kai4Fitness",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

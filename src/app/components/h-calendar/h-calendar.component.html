@@ -1,0 +1,23 @@
+<ion-card class="ion-no-margin calendar">
+  <ion-card-header class="ion-no-padding-bottom">
+    <div class="month ion-padding-bottom">
+      <ion-icon name="chevron-back-outline" (click)="prev()"></ion-icon>
+      <div class="date">
+        <h1 [innerHtml]="month"></h1>
+      </div>
+      <ion-icon name="chevron-forward-outline" (click)="next()"></ion-icon>
+    </div>
+    <div class="weekdays">
+      <div>Su</div>
+      <div>Mo</div>
+      <div>Tu</div>
+      <div>We</div>
+      <div>Th</div>
+      <div>Fr</div>
+      <div>Sa</div>
+    </div>
+  </ion-card-header>
+  <ion-card-content>
+    <div class="days" #days></div>
+  </ion-card-content>
+</ion-card>

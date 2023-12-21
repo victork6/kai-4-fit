@@ -1,0 +1,153 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding full-height">
+    <ion-row>
+      <ion-col class="flex-center ion-padding">
+        <div class="avatar">
+          <ion-avatar>
+            <img *ngIf="userData.avatar" [src]="userData.avatar" />
+          </ion-avatar>
+
+          <ion-button
+            slot="end"
+            fill="clear"
+            size="small"
+            shape="round"
+            color="primary"
+          >
+            <ion-icon slot="icon-only" name="camera"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="userForm" (ngSubmit)="saveChanges()">
+          <ion-row class="input-container ion-no-padding">
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked"
+                  >First Name</ion-label
+                >
+                <ion-input type="text" formControlName="firstName"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="userForm.get('firstName').invalid && (userForm.get('firstName').dirty || userForm.get('firstName').touched)"
+              >
+                <ng-container *ngIf="userForm.get('firstName').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked"
+                  >Last Name</ion-label
+                >
+                <ion-input type="text" formControlName="lastName"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="userForm.get('lastName').invalid && (userForm.get('lastName').dirty || userForm.get('lastName').touched)"
+              >
+                <ng-container *ngIf="userForm.get('firstName').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked"
+                  >Email Address</ion-label
+                >
+                <ion-input type="email" formControlName="email"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="userForm.get('email').invalid && (userForm.get('email').dirty || userForm.get('email').touched)"
+              >
+                <ng-container *ngIf="userForm.get('email').errors.required"
+                  >Email is required</ng-container
+                >
+                <ng-container *ngIf="userForm.get('email').errors.invalidEmail"
+                  >Email is invalid</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked">Weight</ion-label>
+                <ion-input type="text" formControlName="weight"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="userForm.get('weight').invalid && (userForm.get('weight').dirty || userForm.get('weight').touched)"
+              >
+                <ng-container *ngIf="userForm.get('weight').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label color="medium" position="stacked">Height</ion-label>
+                <ion-input type="text" formControlName="height"></ion-input>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="userForm.get('height').invalid && (userForm.get('height').dirty || userForm.get('height').touched)"
+              >
+                <ng-container *ngIf="userForm.get('height').errors.required"
+                  >Field is required</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked">Birth</ion-label>
+                <ion-datetime
+                  displayFormat="DD MMMM YYYY"
+                  formControlName="birth"
+                ></ion-datetime>
+              </ion-item>
+              <div
+                class="errors-container"
+                *ngIf="userForm.get('birth').invalid && (userForm.get('birth').dirty || userForm.get('birth').touched)"
+              >
+                <ng-container *ngIf="userForm.get('birth').errors.required">
+                  Field is required
+                </ng-container>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-padding-top">
+              <ion-button
+                [disabled]="userForm.invalid"
+                class="cta-button"
+                expand="block"
+                fill="solid"
+                type="submit"
+              >
+                <span>Save Changes</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

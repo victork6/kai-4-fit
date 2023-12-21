@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title> My training </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon color="medium" slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+      <ion-button (click)="gotoCalendar()">
+        <ion-icon
+          color="medium"
+          slot="icon-only"
+          name="calendar-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-segment
+          [scrollable]="false"
+          [(ngModel)]="tabType"
+          mode="ios"
+          (ionChange)="tabChanged($event)"
+          class="ion-text-center"
+        >
+          <ion-segment-button *ngFor="let day of days" [value]="day">
+            <span>{{ day }}</span>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+    <ng-container *ngIf="training.activities.length > 0; else noData">
+      <ion-row class="ion-padding">
+        <ion-col size="6">
+          <ul>
+            <li>Total time</li>
+            <li>{{ training.time }} mins</li>
+          </ul>
+        </ion-col>
+        <ion-col size="6">
+          <ul>
+            <li>Calories burn</li>
+            <li>{{ training.calories }} kcal</li>
+          </ul>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding-horizontal">
+        <ion-col>
+          <canvas
+            baseChart
+            [chartType]="chartType"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [legend]="false"
+            [options]="chartOptions"
+          >
+          </canvas>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding-horizontal">
+        <ion-col class="ion-no-padding">
+          <ion-item lines="none" class="section-title">
+            <ion-text>Activities</ion-text>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-padding-horizontal">
+        <ion-col>
+          <ion-list class="ion-no-padding">
+            <app-trainer-activity
+              *ngFor="let activity of training.activities"
+              [title]="activity.title"
+              [bodyArea]="activity.bodyArea"
+              [duration]="activity.duration"
+              [routerLink]="['/activity']"
+            >
+            </app-trainer-activity>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <ng-template #noData>
+      <ion-row class="ion-padding empty-state ion-text-center">
+        <ion-col class="ion-padding">
+          <div class="empty">
+            <img src="assets/svg/no-workout.svg" />
+            <h5>No workouts</h5>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  </ion-grid>
+</ion-content>

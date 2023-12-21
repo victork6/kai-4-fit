@@ -1,0 +1,116 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/signup" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding full-height">
+    <ion-row>
+      <ion-col>
+        <ion-text class="title ion-margin-bottom">Sign In</ion-text>
+        <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked"
+                  >Email Address</ion-label
+                >
+                <ion-input type="email" formControlName="email"></ion-input>
+              </ion-item>
+
+              <div
+                class="errors-container"
+                *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)"
+              >
+                <ng-container *ngIf="loginForm.get('email').errors.required"
+                  >Email is required</ng-container
+                >
+                <ng-container *ngIf="loginForm.get('email').errors.invalidEmail"
+                  >Email is invalid</ng-container
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="input-container ion-no-padding">
+            <ion-col>
+              <ion-item class="ion-no-padding">
+                <ion-label color="medium" position="stacked"
+                  >Password</ion-label
+                >
+                <ion-input
+                  type="password"
+                  formControlName="password"
+                ></ion-input>
+              </ion-item>
+              <div class="bottom-container">
+                <div>
+                  <div
+                    class="errors-container"
+                    *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)"
+                  >
+                    <ng-container
+                      *ngIf="loginForm.get('password').errors.required"
+                    >
+                      Password is required
+                    </ng-container>
+                    <ng-container
+                      *ngIf="loginForm.get('password').errors.invalidPassword"
+                    >
+                      {{loginForm.get('password').errors.message}}
+                    </ng-container>
+                  </div>
+                </div>
+                <ion-button
+                  class="btn-forgot"
+                  fill="clear"
+                  size="small"
+                  (click)="goToForgot()"
+                  >Forgot password?</ion-button
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-padding-top">
+              <ion-button
+                [disabled]="loginForm.invalid"
+                class="cta-button"
+                expand="block"
+                fill="solid"
+                type="submit"
+              >
+                <span>Sign In</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+        <div class="ion-text-center">
+          <p class="small">or sign in with</p>
+          <div class="flex-center">
+            <ion-button fill="outline" class="social-btn">
+              <div class="btn-container">
+                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-text>Facebook</ion-text>
+              </div>
+            </ion-button>
+            <ion-button fill="outline" class="social-btn">
+              <div class="btn-container">
+                <ion-icon name="logo-google"></ion-icon>
+                <ion-text>Google</ion-text>
+              </div>
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <div class="login-message">
+          <span>Don't have an account?</span><a routerLink="/signup">Sign Up</a>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
